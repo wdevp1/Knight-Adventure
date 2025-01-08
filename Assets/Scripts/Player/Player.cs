@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,10 @@ public class Player : MonoBehaviour
         inputVector = GameInput.Instance.GetMovementVector();
     }
 
+    private void Start() {
+        GameInput.Instance.OnPlayerAttack += Player.OnPlayerAttack;
+    }
+
     private void FixedUpdate() {
         HandleMovement();
     }
@@ -44,5 +49,9 @@ public class Player : MonoBehaviour
     public Vector3 GetPlayerScreenPosition() {
         Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
         return playerScreenPosition;
+    }
+
+    private static void OnPlayerAttack(object sender, EventArgs e) {
+        ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 }
