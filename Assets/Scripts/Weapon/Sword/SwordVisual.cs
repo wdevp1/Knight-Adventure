@@ -5,20 +5,24 @@ using UnityEngine;
 
 public class SwordVisual : MonoBehaviour
 {
-    [SerializeField] private Sword sword;
+    [SerializeField] private Sword _sword;
 
-    private Animator animator;
+    private Animator _animator;
     private const string ATTACK = "Attack";
 
     private void Awake() {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start() {
-        sword.OnSwordSwing += Sword_OnSwordSwing;
+        _sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
     private void Sword_OnSwordSwing(object sender, EventArgs e) {
-        animator.SetTrigger(ATTACK);
+        _animator.SetTrigger(ATTACK);
+    }
+
+    public void TriggerEndAttackAnimation() {
+        _sword.AttackColliderTurnOff();
     }
 }

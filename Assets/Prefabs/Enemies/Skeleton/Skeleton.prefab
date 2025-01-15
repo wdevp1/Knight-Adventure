@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2628310164896154707}
   - component: {fileID: 4525089366463222409}
   - component: {fileID: 2488168292416056111}
+  - component: {fileID: 8222104736143749163}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -118,7 +119,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
-  m_Speed: 1.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -147,6 +148,19 @@ MonoBehaviour:
   roamingDistanceMax: 7
   roamingDistanceMin: 3
   roamingTimerMax: 2
+--- !u!114 &8222104736143749163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445029187522710867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b78c98d240e6944eb9843935f6ac9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHelth: 20
 --- !u!1 &4821454121803903004
 GameObject:
   m_ObjectHideFlags: 0
