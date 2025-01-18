@@ -93,10 +93,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1504252, y: 1.2506716}
+  m_Offset: {x: 0.17237544, y: 1.3653004}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1288056, y: 2.5941887}
+  m_Size: {x: 1.0849051, y: 2.364931}
   m_EdgeRadius: 0
 --- !u!195 &4525089366463222409
 NavMeshAgent:
@@ -119,7 +119,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
-  m_Speed: 0
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -143,11 +143,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d40fb18854ce64badaf3214c7a9f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingState: 1
-  guard: 0
-  roamingDistanceMax: 7
-  roamingDistanceMin: 3
-  roamingTimerMax: 2
+  _startingState: 1
+  _guard: 0
+  _roamingDistanceMax: 7
+  _roamingDistanceMin: 3
+  _roamingTimerMax: 10
+  _isChasingEnemy: 1
+  _chasingDistance: 4
+  _chasingSpeedMultiplier: 2
+  _isAttackingEnemy: 0
+  _attackingDistance: 2
+  _attackRate: 2
 --- !u!114 &8222104736143749163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +262,7 @@ GameObject:
   - component: {fileID: 4438883225337998758}
   - component: {fileID: 3451103338781225983}
   - component: {fileID: 2920315397590621903}
+  - component: {fileID: 7063060157840365167}
   m_Layer: 0
   m_Name: SkeletonVisual
   m_TagString: Untagged
@@ -352,3 +359,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7063060157840365167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301408839538319874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6084ed5dbc54984d89ea70a111a0650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyAI: {fileID: 2488168292416056111}
