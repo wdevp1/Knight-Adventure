@@ -202,6 +202,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &117421028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4821454121803903004, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
+  m_PrefabInstance: {fileID: 4215595992178119900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &178358429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1496,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7063060157840365167, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
+      propertyPath: _enemyShadow
+      value: 
+      objectReference: {fileID: 117421028}
+    - target: {fileID: 8222104736143749163, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
+      propertyPath: _enemySO
+      value: 
+      objectReference: {fileID: 11400000, guid: c781ec99072eff1419f38511e84ad63e, type: 2}
+    - target: {fileID: 8222104736143749163, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
+      propertyPath: _maxHelth
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1543,6 +1560,10 @@ PrefabInstance:
     - target: {fileID: 1068631237862773372, guid: 980d2ed8873380a44bc2b26f4ab4e99a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738511059595702342, guid: 980d2ed8873380a44bc2b26f4ab4e99a, type: 3}
+      propertyPath: _damageAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9049931683159501520, guid: 980d2ed8873380a44bc2b26f4ab4e99a, type: 3}
       propertyPath: m_Name
