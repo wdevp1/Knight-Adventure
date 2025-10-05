@@ -27,11 +27,6 @@ public class EnemyEntity : MonoBehaviour
         _currentHelth = _enemySO.enemyHealth;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Attack");
-    }
-
     public void TakeDamage(int damage) {
         _currentHelth -= damage;
         OnTakeHit?.Invoke(this, EventArgs.Empty);
@@ -46,6 +41,14 @@ public class EnemyEntity : MonoBehaviour
     public void PolygonColliderTurnOn()
     {
         _polygonCollider2D.enabled = true;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.transform.TryGetComponent(out Player player))
+        {
+            player.TakeDamage(transform, _enemySO.enemyDamageAmount);
+        }
     }
 
     private void DetectDeath() {

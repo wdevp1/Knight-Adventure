@@ -1,22 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerVisual : MonoBehaviour
 {
-    private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private const string IS_RUNNING = "IsRunning";
+    private const string IS_DIE = "IsDie";
 
     private void Awake() {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
     }
 
     private void Update() {
-        animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
-        AdjustPlayerFacingDirection();
+        _animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
+
+        if(Player.Instance.IsALive())
+            AdjustPlayerFacingDirection();
+    }
+
+    private void Player_OnPlayerDeath(object sender, EventArgs e)
+    {
+        _animator.SetBool(IS_DIE, true);
     }
 
     private void AdjustPlayerFacingDirection() {
@@ -24,9 +36,9 @@ public class PlayerVisual : MonoBehaviour
         Vector3 playerPosition = Player.Instance.GetPlayerScreenPosition();
 
         if(mousePos.x < playerPosition.x) {
-            spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = true;
         } else {
-            spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = false;
         }
     }
 }
