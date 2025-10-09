@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 519282208}
   - component: {fileID: 519282207}
   - component: {fileID: 519282209}
+  - component: {fileID: 519282210}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -558,6 +559,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acb0aca542644d479dd058a5f1be1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &519282210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519282205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50af2d094b7f5294bb290f376aa9248c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagebleObject: {fileID: 1737421740}
+  _blinkMaterial: {fileID: 2100000, guid: 3ca4eb48765d0cd4c9d2f929523d1aee, type: 2}
+  _blinkDuration: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1224,7 @@ Transform:
   m_GameObject: {fileID: 1737421739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.64, y: -4.51, z: 0}
+  m_LocalPosition: {x: -2.15, y: -4.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1475,11 +1491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119815549566677396, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.01
+      value: -8.33
       objectReference: {fileID: 0}
     - target: {fileID: 5119815549566677396, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.47
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: 5119815549566677396, guid: bf2c9dc16836b864089fa8f7adc82bcf, type: 3}
       propertyPath: m_LocalPosition.z

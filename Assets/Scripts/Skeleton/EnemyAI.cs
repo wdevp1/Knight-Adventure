@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using KnightAdventure.Utils;
@@ -80,6 +78,11 @@ public class EnemyAI : MonoBehaviour {
         _currentState = State.Death;
     }
 
+    public float GetRoamingAnimationSpeed()
+    {
+        return _navMeshAgent.speed / _roamingSpeed;
+    }
+
     private void StateHandler() {
         switch (_currentState) {
             case State.Roaming:
@@ -130,10 +133,6 @@ public class EnemyAI : MonoBehaviour {
         }
     }
 
-    public float GetRoamingAnimationSpeed() {
-        return _navMeshAgent.speed / _roamingSpeed;
-    }
-
     private void ChasingTarget() {
         _navMeshAgent.SetDestination(Player.Instance.transform.position);
     }
@@ -150,7 +149,10 @@ public class EnemyAI : MonoBehaviour {
 
         if (_isAttackingEnemy) {
             if (distanceToPlayer <= _attackingDistance) {
-                newState = State.Attacking;
+                if (Player.Instance.IsALive())
+                    newState = State.Attacking;
+                else
+                    newState = State.Roaming;
             }
         }
 

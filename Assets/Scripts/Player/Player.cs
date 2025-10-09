@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
     public event EventHandler OnPlayerDeath;
+    public event EventHandler OnFlashBlink;
 
     private Rigidbody2D _rb;
     private KnockBack _knockBack;
@@ -69,6 +70,8 @@ public class Player : MonoBehaviour
             _currentHealth = Math.Max(0, _currentHealth -= damage);
             Debug.Log(_currentHealth);
             _knockBack.GetKnockBack(damageSource);
+
+            OnFlashBlink?.Invoke(this, EventArgs.Empty);
 
             StartCoroutine(DamageRecoveryRoutine());
         }
