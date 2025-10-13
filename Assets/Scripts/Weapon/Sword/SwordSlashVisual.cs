@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordSlashVisual : MonoBehaviour
@@ -16,6 +14,11 @@ public class SwordSlashVisual : MonoBehaviour
 
     private void Start() {
         sword.OnSwordSwing += Sword_OnSwordSwing;
+    }
+
+    private void OnDestroy()
+    {
+        sword.OnSwordSwing -= Sword_OnSwordSwing;
     }
 
     private void Sword_OnSwordSwing(object sender, EventArgs e) {

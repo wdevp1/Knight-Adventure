@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     }
 
     private void Start() {
-        GameInput.Instance.OnPlayerAttack += Player.OnPlayerAttack;
+        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
         _currentHealth = _maxHealth;
         _canTakeDamage = true;
         _isALive = true;
@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
             return;
 
         HandleMovement();
+    }
+
+    private void OnDestroy()
+    {
+        GameInput.Instance.OnPlayerAttack -= GameInput_OnPlayerAttack;
     }
 
     public bool IsRunning()
@@ -107,7 +112,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private static void OnPlayerAttack(object sender, EventArgs e) {
+    private static void GameInput_OnPlayerAttack(object sender, EventArgs e) {
         ActiveWeapon.Instance.GetActiveWeapon().Attack();
     }
 }

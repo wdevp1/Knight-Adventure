@@ -18,6 +18,11 @@ public class SwordVisual : MonoBehaviour
         _sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
+    private void OnDestroy()
+    {
+        _sword.OnSwordSwing -= Sword_OnSwordSwing;
+    }
+
     private void Sword_OnSwordSwing(object sender, EventArgs e) {
         _animator.SetTrigger(ATTACK);
     }

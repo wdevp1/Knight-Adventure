@@ -28,19 +28,28 @@ public class PlayerVisual : MonoBehaviour
             AdjustPlayerFacingDirection();
     }
 
+    private void OnDestroy()
+    {
+        Player.Instance.OnPlayerDeath -= Player_OnPlayerDeath;
+    }
+
     private void Player_OnPlayerDeath(object sender, EventArgs e)
     {
         _animator.SetBool(IS_DIE, true);
         _flashBlink.StopBlinking();
     }
 
-    private void AdjustPlayerFacingDirection() {
+    private void AdjustPlayerFacingDirection()
+    {
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
         Vector3 playerPosition = Player.Instance.GetPlayerScreenPosition();
 
-        if(mousePos.x < playerPosition.x) {
+        if (mousePos.x < playerPosition.x)
+        {
             _spriteRenderer.flipX = true;
-        } else {
+        }
+        else
+        {
             _spriteRenderer.flipX = false;
         }
     }
