@@ -40,6 +40,14 @@ public class FlashBlink : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (_damagebleObject is Player)
+        {
+            (_damagebleObject as Player).OnFlashBlink -= DamagebleObject_OnFlashBlink;
+        }
+    }
+
     public void StopBlinking()
     {
         SetDefaultMaterial();
@@ -60,13 +68,5 @@ public class FlashBlink : MonoBehaviour
     private void SetDefaultMaterial()
     {
         _spriteRenderer.material = _defaultMaterial;
-    }
-
-    private void OnDestroy()
-    {
-        if (_damagebleObject is Player)
-        {
-            (_damagebleObject as Player).OnFlashBlink -= DamagebleObject_OnFlashBlink;
-        }
     }
 }
