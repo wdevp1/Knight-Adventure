@@ -18,8 +18,11 @@ public class FlashBlink : MonoBehaviour
         _defaultMaterial = _spriteRenderer.material;
 
         _isBlinking = true;
+    }
 
-        if(_damagebleObject is Player)
+    private void Start()
+    {
+        if (_damagebleObject is Player)
         {
             (_damagebleObject as Player).OnFlashBlink += DamagebleObject_OnFlashBlink;
         }
