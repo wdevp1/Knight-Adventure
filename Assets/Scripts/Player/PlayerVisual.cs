@@ -7,8 +7,8 @@ public class PlayerVisual : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private FlashBlink _flashBlink;
 
-    private const string IS_RUNNING = "IsRunning";
-    private const string IS_DIE = "IsDie";
+    private static readonly int IsDie = Animator.StringToHash("IsDie");
+    private static readonly int IsRunning = Animator.StringToHash("IsRunning");
 
     private void Awake() {
         _animator = GetComponent<Animator>();
@@ -22,7 +22,7 @@ public class PlayerVisual : MonoBehaviour
     }
 
     private void Update() {
-        _animator.SetBool(IS_RUNNING, Player.Instance.IsRunning());
+        _animator.SetBool(IsRunning, Player.Instance.IsRunning());
 
         if(Player.Instance.IsALive())
             AdjustPlayerFacingDirection();
@@ -35,7 +35,7 @@ public class PlayerVisual : MonoBehaviour
 
     private void Player_OnPlayerDeath(object sender, EventArgs e)
     {
-        _animator.SetBool(IS_DIE, true);
+        _animator.SetBool(IsDie, true);
         _flashBlink.StopBlinking();
     }
 
@@ -44,13 +44,6 @@ public class PlayerVisual : MonoBehaviour
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
         Vector3 playerPosition = Player.Instance.GetPlayerScreenPosition();
 
-        if (mousePos.x < playerPosition.x)
-        {
-            _spriteRenderer.flipX = true;
-        }
-        else
-        {
-            _spriteRenderer.flipX = false;
-        }
+        _spriteRenderer.flipX = mousePos.x < playerPosition.x;
     }
 }

@@ -5,7 +5,7 @@ public class Sword : MonoBehaviour
 {
     public event EventHandler OnSwordSwing;
 
-    [SerializeField] private int _damageAmount = 2;
+    [SerializeField] private int damageAmount = 2;
 
     private PolygonCollider2D _polygonCollider2D;
 
@@ -19,7 +19,7 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.transform.TryGetComponent(out EnemyEntity enemyEntity)) {
-            enemyEntity.TakeDamage(_damageAmount);
+            enemyEntity.TakeDamage(damageAmount);
         }
     }
 

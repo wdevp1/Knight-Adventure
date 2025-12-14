@@ -3,29 +3,30 @@ using UnityEngine;
 
 public class SwordVisual : MonoBehaviour
 {
-    [SerializeField] private Sword _sword;
+    [SerializeField] private Sword sword;
 
     private Animator _animator;
-    private const string ATTACK = "Attack";
+    
+    private static readonly int Attack = Animator.StringToHash("Attack");
 
     private void Awake() {
         _animator = GetComponent<Animator>();
     }
 
     private void Start() {
-        _sword.OnSwordSwing += Sword_OnSwordSwing;
+        sword.OnSwordSwing += Sword_OnSwordSwing;
     }
 
     private void OnDestroy()
     {
-        _sword.OnSwordSwing -= Sword_OnSwordSwing;
+        sword.OnSwordSwing -= Sword_OnSwordSwing;
     }
 
     private void Sword_OnSwordSwing(object sender, EventArgs e) {
-        _animator.SetTrigger(ATTACK);
+        _animator.SetTrigger(Attack);
     }
 
     public void TriggerEndAttackAnimation() {
-        _sword.AttackColliderTurnOff();
+        sword.AttackColliderTurnOff();
     }
 }
