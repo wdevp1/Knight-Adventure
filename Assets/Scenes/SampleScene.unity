@@ -579,9 +579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50af2d094b7f5294bb290f376aa9248c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damagebleObject: {fileID: 1737421740}
-  _blinkMaterial: {fileID: 2100000, guid: 3ca4eb48765d0cd4c9d2f929523d1aee, type: 2}
-  _blinkDuration: 0.2
+  damagebleObject: {fileID: 0}
+  blinkMaterial: {fileID: 0}
+  blinkDuration: 0.2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,9 +1277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c85e209e1d8d040b89a64135021f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingSpeed: 10
-  _maxHealth: 5
-  _damageRecoveryTime: 0.5
+  movingSpeed: 10
+  maxHealth: 10
+  damageRecoveryTime: 0.5
 --- !u!4 &1737421742
 Transform:
   m_ObjectHideFlags: 0
@@ -1416,8 +1416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5b8b2ae29dd664691116ad354ed1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockBackForce: 2
-  _knockBackMovingTimerMax: 0.3
+  knockBackForce: 3
+  knockBackMovingTimerMax: 0.3
 --- !u!4 &1740018014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5582076583199916569, guid: 1dc8d5d9c03928b48aea4efd50a7fc79, type: 3}
@@ -1590,6 +1590,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -160
       objectReference: {fileID: 0}
+    - target: {fileID: 3594661803535448190, guid: 980d2ed8873380a44bc2b26f4ab4e99a, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1493787873}
     - target: {fileID: 3738511059595702342, guid: 980d2ed8873380a44bc2b26f4ab4e99a, type: 3}
       propertyPath: _damageAmount
       value: 1
