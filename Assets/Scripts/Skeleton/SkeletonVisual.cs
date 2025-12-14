@@ -30,16 +30,16 @@ public class SkeletonVisual : MonoBehaviour {
         _enemyEntity.OnDeath += _enemyEntity_OnDeath;
     }
 
+    private void Update() {
+        _animator.SetBool(IS_RUNNING, _enemyAI.IsRunning);
+        _animator.SetFloat(CHASING_SPEED_MULTIPLIER, _enemyAI.GetRoamingAnimationSpeed());
+    }
+
     private void OnDestroy()
     {
         _enemyAI.OnEnemyAttack -= _enemyAI_OnEnemyAttack;
         _enemyEntity.OnTakeHit -= _enemyEntity_OnTakeHit;
         _enemyEntity.OnDeath -= _enemyEntity_OnDeath;
-    }
-
-    private void Update() {
-        _animator.SetBool(IS_RUNNING, _enemyAI.IsRunning);
-        _animator.SetFloat(CHASING_SPEED_MULTIPLIER, _enemyAI.GetRoamingAnimationSpeed());
     }
 
     public void TriggerAttackAnimationTurnOff()

@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b78c98d240e6944eb9843935f6ac9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHelth: 20
+  _enemySO: {fileID: 11400000, guid: c781ec99072eff1419f38511e84ad63e, type: 2}
 --- !u!1 &4821454121803903004
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,3 +431,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyAI: {fileID: 2488168292416056111}
   _enemyEntity: {fileID: 8222104736143749163}
+  _enemyShadow: {fileID: 0}
