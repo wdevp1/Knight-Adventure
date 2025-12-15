@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float movingSpeed = 10f;
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private float damageRecoveryTime = 0.5f;
+    [Space(20)]
+    [SerializeField] private int dashSpeed = 4;
+    [SerializeField] private float dashTime = 0.2f;
+    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private float dashCoolDownTime = 0.25f;
 
     private Vector2 _inputVector;
     private readonly float _minMovingSpeed = 0.1f;
@@ -23,6 +28,8 @@ public class Player : MonoBehaviour
     private int _currentHealth;
     private bool _canTakeDamage;
     private bool _isALive;
+    private bool _isDashing;
+    private float _initialMovingSpeed;
 
     private Camera _mainCamera;
 
@@ -31,13 +38,16 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _knockBack = GetComponent<KnockBack>();
         _mainCamera = Camera.main;
+        _initialMovingSpeed = movingSpeed;
     }
 
     private void Start() {
-        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
         _currentHealth = maxHealth;
         _canTakeDamage = true;
         _isALive = true;
+        
+        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
+        GameInput.Instance.OnPlayerDash += GameInput_OnPlayerDash;
     }
 
     private void Update()
@@ -117,5 +127,31 @@ public class Player : MonoBehaviour
 
     private static void GameInput_OnPlayerAttack(object sender, EventArgs e) {
         ActiveWeapon.Instance.GetActiveWeapon().Attack();
+    }
+    
+    private void GameInput_OnPlayerDash(object sender, EventArgs e)
+    {
+        Dash();
+    }
+
+    private void Dash()
+    {
+        if(!_isDashing)
+            StartCoroutine(DashRoutine());
+    }
+
+    private IEnumerator DashRoutine()
+    {
+        _isDashing = true;
+        movingSpeed *= dashSpeed;
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashTime);
+
+        trailRenderer.emitting = false;
+        movingSpeed = _initialMovingSpeed;
+        
+        yield return new WaitForSeconds(dashCoolDownTime);
+
+        _isDashing = false;
     }
 }
